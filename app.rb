@@ -11,8 +11,7 @@ end
 
 post '/' do
   # game.next
-  @index = params[:index]
+  @index_array = params[:index]
   # board = game.create_from_params(cell_params)
-  params[:index].inspect
   erb :index, locals: { game: game }
 end
