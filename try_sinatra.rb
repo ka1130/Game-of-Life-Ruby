@@ -1,4 +1,3 @@
-
 # require 'bundler'
 # Bundler.require(:default)
 # require 'sinatra/reloader'
@@ -7,14 +6,14 @@
 require 'sinatra'
 
 get '/' do
-  output = "Hello world!"
-  output << "<br />"
-  output << "<a href=\"/goodbye\">Leave</a>"
+  output = 'Hello world!'
+  output << '<br />'
+  output << '<a href="/goodbye">Leave</a>'
   output
 end
 
 get '/goodbye' do
-  "Goodbye world!"
+  'Goodbye world!'
 end
 
 get '/form' do
@@ -25,12 +24,12 @@ get '/form' do
 end
 
 post '/form' do
-  "Thank you for submitting the form"
+  'Thank you for submitting the form'
 end
 
 get '/company/about' do
-  output = "<h2>Sinatra</h2>"
-  output << "<p>My Sinatra App</p>"
+  output = '<h2>Sinatra</h2>'
+  output << '<p>My Sinatra App</p>'
   output
 end
 

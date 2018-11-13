@@ -14,12 +14,12 @@
       <input type="submit" value="Next Round">
     </form>
     <div>
-      <% 20.times do %>
-        <div>
-          <% 20.times do %>
-            <input type="checkbox" checked>
-          <% end %>
-        </div>
+      <% @@game.current_round.each do |row| %>
+      <div>
+        <% row.each do |cell| %>
+          <input type="checkbox" >
+        <%end%>
+      </div>
       <% end %>
     </div>
   </body>
