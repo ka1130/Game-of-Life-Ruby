@@ -13,7 +13,5 @@ class Game
 
   def next; end
 
-  def create_from_params(cell_params)
-    puts cell_params
-  end
+  def cell_index(cell_params); end
 end

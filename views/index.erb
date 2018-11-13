@@ -15,14 +15,13 @@
         <% game.current_round.each_with_index do |row, i| %>
         <div class="row">
           <% row.each_with_index do |cell, j| %>
-            <input type="checkbox" id='index_<%= "i#{i}_j#{j}" %>' name="index[]" value='<%= "i#{i}_j#{j}" %>' >
+            <input type="checkbox" id='index_<%= "i#{i}_j#{j}" %>' name="index[]" value=<%= i + j * game.size %> >
           <%end%>
         </div>
         <% end %>
       </div>
       <input type="submit" value="Next Round">
     </form>
-    <%#= text %>
     <p>index: <%= @index %></p>
   </body>
 </html>
