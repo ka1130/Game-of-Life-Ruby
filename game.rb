@@ -6,9 +6,14 @@ class Game
     @size = size
     @current_round = Array.new(size) { Array.new(size, 0) }
     @next_round = Array.new(size) { Array.new(size) }
+    @neighbours = 0
   end
 
   def start; end
 
   def next; end
+
+  def create_from_params(cell_params)
+    puts cell_params
+  end
 end

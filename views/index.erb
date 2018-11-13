@@ -11,16 +11,18 @@
       <h2>Game of Life</h2>
     </article>
     <form method="POST" action="/">
+      <div class="board">
+        <% game.current_round.each_with_index do |row, i| %>
+        <div class="row">
+          <% row.each_with_index do |cell, j| %>
+            <input type="checkbox" id='index_<%= "i#{i}_j#{j}" %>' name="index[]" value='<%= "i#{i}_j#{j}" %>' >
+          <%end%>
+        </div>
+        <% end %>
+      </div>
       <input type="submit" value="Next Round">
     </form>
-    <div>
-      <% @@game.current_round.each do |row| %>
-      <div>
-        <% row.each do |cell| %>
-          <input type="checkbox" >
-        <%end%>
-      </div>
-      <% end %>
-    </div>
+    <%#= text %>
+    <p>index: <%= @index %></p>
   </body>
 </html>
