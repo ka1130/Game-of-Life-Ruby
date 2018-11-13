@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Game of Life: Ruby</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
   </head>
   <body>
     <article>
@@ -12,5 +13,14 @@
     <form method="POST" action="/">
       <input type="submit" value="Next Round">
     </form>
+    <div>
+      <% 20.times do %>
+        <div>
+          <% 20.times do %>
+            <input type="checkbox" checked>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </body>
 </html>
