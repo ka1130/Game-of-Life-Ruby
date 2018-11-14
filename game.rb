@@ -18,7 +18,52 @@ class Game
     [row.to_i, col]
   end
 
-  def count_living_neighbours(row, col); end
+  # get cell neighbours
+  def count_living_neighbours(row, col)
+    neighbours = []
+
+    # first check for possible neighbours
+    # only consider a neighbour if it exists and is within the bounds of the board
+    # as sometimes it gives out a value even if we check with [-1][-1] or so
+
+    # upper row
+    unless @current_board[row - 1].nil? || row - 1 < 0
+      unless @current_board[row - 1][col - 1].nil? || col - 1 < 0
+        neighbours.push(@current_board[row - 1][col - 1])
+      end
+      neighbours.push(@current_board[row - 1][col])
+      unless @current_board[row - 1][col + 1].nil? || col + 1 > @size - 1
+        neighbours.push(@current_board[row - 1][col + 1])
+      end
+    end
+
+    # same row
+    unless @current_board[row][col - 1].nil? || col - 1 < 0
+      neighbours.push(@current_board[row][col - 1])
+    end
+    unless @current_board[row][col + 1].nil? || col + 1 > @size - 1
+      neighbours.push(@current_board[row][col + 1])
+    end
+
+    # lower row
+    unless @current_board[row + 1].nil? || row + 1 > @size - 1
+      unless @current_board[row + 1][col - 1].nil? || col - 1 < 0
+        neighbours.push(@current_board[row + 1][col - 1])
+      end
+      neighbours.push(@current_board[row + 1][col])
+      unless @current_board[row + 1][col + 1].nil? || col + 1 > @size - 1
+        neighbours.push(@current_board[row + 1][col + 1])
+      end
+    end
+
+    # check how many possible neighbours are alive
+    alive_neighbours = 0
+    neighbours.each do |alive|
+      alive_neighbours += 1 if alive != 0
+    end
+
+    alive_neighbours
+  end
 
   # calculating next state for a single cell
   # rubocop:disable Metrics/LineLength
