@@ -15,6 +15,7 @@ post '/' do
 
   # populating current board array based on checked indexes
   game.populate_current_board(@index_array)
+  game.calculate_next_board
 
   erb :index, locals: { game: game }
 end
