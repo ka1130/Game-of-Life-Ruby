@@ -1,3 +1,4 @@
+require 'pp'
 require 'sinatra'
 require 'sinatra/reloader'
 require_relative 'game'
@@ -5,13 +6,15 @@ require_relative 'game'
 game = Game.new
 
 get '/' do
-  game.start
   erb :index, locals: { game: game }
 end
 
 post '/' do
-  # game.next
   @index_array = params[:index]
-  # board = game.create_from_params(cell_params)
+  pp @index_array
+
+  # populating current board array based on checked indexes
+  game.populate_current_board(@index_array)
+
   erb :index, locals: { game: game }
 end
