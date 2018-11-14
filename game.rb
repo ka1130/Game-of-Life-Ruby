@@ -18,6 +18,28 @@ class Game
     [row.to_i, col]
   end
 
+  def count_living_neighbours(row, col)
+  end
+
+  # calculating next state for a single cell
+  def calculate_next_cell_state(row, col)
+    # living_neighbours = count_living_neighbours(row, col)
+    living_neighbours = 2
+    current_cell_state = @current_board[row][col]
+
+    if living_neighbours < 2
+      current_cell_state = 0
+    elsif living_neighbours == 2 && current_cell_state != 0
+      current_cell_state = 1
+    elsif living_neighbours == 3
+      current_cell_state = 1
+    else
+      current_cell_state = 0
+    end
+
+    current_cell_state
+  end
+
   def populate_current_board(index_array)
     @current_board = Array.new(size) { Array.new(size, 0) }
 
@@ -39,10 +61,9 @@ class Game
 
     current_board.each_with_index do |row_items, row|
       row_items.each_with_index do |col_items, col|
-        # puts "row_items, row: #{row_items}, #{row}"
-        # puts "col_items, col: #{col_items}, #{col}"
+        next_board[row][col] = calculate_next_cell_state(row, col)
       end
     end
-
+    @current_board = next_board
   end
 end
