@@ -1,14 +1,17 @@
-require 'game'
+require_relative '../game'
 
 describe 'Game' do
   describe 'atributes' do
-    # @size = size
-    # @current_board = Array.new(size) { Array.new(size, 0) }
+    it "allows reading and writing for :size" do
+      game = Game.new
+      game.size = 30
+      expect(game.size).to eq(30)
+    end
   end
 
-  describe 'populate_current_board' do
+  describe '#populate_current_board' do
   end
 
-  describe 'calculate_next_board' do
+  describe '#calculate_next_board' do
   end
 end
