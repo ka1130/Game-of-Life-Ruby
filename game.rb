@@ -21,35 +21,34 @@ class Game
   def count_living_neighbours(row, col); end
 
   # calculating next state for a single cell
+  # rubocop:disable Metrics/LineLength
   def calculate_next_cell_state(row, col)
     living_neighbours = count_living_neighbours(row, col)
     current_cell_state = @current_board[row][col]
 
-    current_cell_state = if living_neighbours < 2
+    current_cell_state = if living_neighbours < 2 || living_neighbours > 3
                            0
-                         elsif living_neighbours == 2 && current_cell_state != 0
-                           1
-                         elsif living_neighbours == 3
+                         elsif (living_neighbours == 2 && current_cell_state != 0) || living_neighbours == 3
                            1
                          else
                            0
                          end
 
-    puts "current_cell_state: #{current_cell_state}"
     current_cell_state
   end
+  # rubocop:enable Metrics/LineLength
 
   def populate_current_board(index_array)
     @current_board = Array.new(size) { Array.new(size, 0) }
 
     # make sure list of checked items exists
-    unless index_array.nil?
-      index_array.each do |index|
-        coords = fetch_cell_coordinates_by_index(index)
-        row = coords[0]
-        col = coords[1]
-        @current_board [row][col] = 1
-      end
+    return nil if index_array.nil?
+
+    index_array.each do |index|
+      coords = fetch_cell_coordinates_by_index(index)
+      row = coords[0]
+      col = coords[1]
+      @current_board [row][col] = 1
     end
   end
 
