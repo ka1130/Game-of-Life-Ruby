@@ -11,11 +11,15 @@
       <h2>Game of Life</h2>
       <form method="POST" action="/">
         <div class="board">
-          <% game.current_board.each_with_index do |row, i| %>
+          <% game.current_board.each_with_index do |row, row_index| %>
           <div class="row">
-            <% row.each_with_index do |cell, j| %>
-              <input type="checkbox" name="index[]" value=<%= i + j * game.size %> >
-            <%end%>
+            <% row.each_with_index do |col, col_index| %>
+              <% if col != 0 %>
+                <input type="checkbox" name="index[]" value=<%= col_index + row_index * game.size %> checked>
+              <% else %>
+                <input type="checkbox" name="index[]" value=<%= col_index + row_index * game.size %>>
+              <% end %>
+            <% end %>
           </div>
           <% end %>
         </div>
